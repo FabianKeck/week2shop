@@ -1,6 +1,7 @@
 package de.neuefische.productDB;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Optional;
 
@@ -15,8 +16,14 @@ public class ProductDBMemory implements ProductDB{
 
     @Override
     public Optional<ArrayList<Product>> list() {
-
-        return Optional.empty();
+        ArrayList<Product> productArrayList= new ArrayList<>();
+        products.forEach(
+                (id, product)->{
+                    productArrayList.add(product);
+                }
+        );
+        productArrayList.sort(Comparator.comparing(Product::getId));
+        return Optional.of(productArrayList);
     }
 
     @Override

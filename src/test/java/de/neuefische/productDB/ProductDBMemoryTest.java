@@ -14,14 +14,16 @@ class ProductDBMemoryTest {
     void listTest(){
         //given
         ArrayList<Product> products = new ArrayList<>(List.of(
-                new Product("Tisch", "1"),
-                new Product("Stuhl", "2")
+                new Product("Stuhl", "2"),
+                new Product("Tisch", "1")
                 ));
         ProductDB productDB =new ProductDBMemory(products);
         //when
         Optional<ArrayList<Product>> actual=productDB.list();
         //then
-        assertArrayEquals(actual.get().toArray(),products.toArray() );
+        assertArrayEquals(actual.get().toArray(),new Product[] {
+                new Product("Tisch", "1"),new Product("Stuhl", "2")
+        });
 
     }
 

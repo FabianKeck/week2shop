@@ -1,5 +1,7 @@
 package de.neuefische.productDB;
 
+import java.util.Objects;
+
 public class Product {
     private String name;
     private String id;
@@ -29,5 +31,18 @@ public class Product {
 
     public void setPrize(int prize) {
         this.prize = prize;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Objects.equals(id, product.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
