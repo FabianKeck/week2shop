@@ -1,9 +1,11 @@
 package de.neuefische.orderdb;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 public interface OrderDB {
     void addOrder(Order order);
-    ArrayList<Order> listOrders();
+    Optional<Order> getByID(String id);
 
+    ArrayList<Order> listOrders();
 }

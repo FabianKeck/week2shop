@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Order {
-    String id;
-    ArrayList<Product> products;
+    private String id;
+    private ArrayList<Product> products;
 
     public Order(String id, ArrayList<Product> products) {
         this.id = id;
