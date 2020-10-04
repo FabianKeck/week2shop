@@ -21,6 +21,7 @@ class ProductDBMemoryTest {
         //when
         Optional<ArrayList<Product>> actual=productDB.list();
         //then
+        assertTrue(actual.isPresent());
         assertArrayEquals(actual.get().toArray(),new Product[] {
                 new Product("Tisch", "1"),new Product("Stuhl", "2")
         });
@@ -57,9 +58,9 @@ class ProductDBMemoryTest {
         Product expected =new Product("Tisch","2");
         ProductDB productDB =new ProductDBMemory(products);
         //when
-        Optional<Product> actual = productDB.getById("3");
-        //
+        Optional<Product> actual= productDB.getById("3");
         assertTrue(actual.isEmpty());
+
     }
 
 

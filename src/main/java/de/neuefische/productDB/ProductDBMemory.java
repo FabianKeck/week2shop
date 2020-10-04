@@ -18,9 +18,7 @@ public class ProductDBMemory implements ProductDB{
     public Optional<ArrayList<Product>> list() {
         ArrayList<Product> productArrayList= new ArrayList<>();
         products.forEach(
-                (id, product)->{
-                    productArrayList.add(product);
-                }
+                (id, product)-> productArrayList.add(product)
         );
         productArrayList.sort(Comparator.comparing(Product::getId));
         return Optional.of(productArrayList);
@@ -28,6 +26,7 @@ public class ProductDBMemory implements ProductDB{
 
     @Override
     public Optional<Product> getById(String id) {
-        return Optional.empty();
+        Product returnProduct =  products.get(id);
+        return returnProduct==null?Optional.empty():Optional.of(returnProduct);
     }
 }
