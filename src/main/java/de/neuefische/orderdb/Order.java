@@ -9,7 +9,7 @@ public class Order {
     private String id;
     private ArrayList<Product> products;
 
-    public Order(String id, ArrayList<Product> products) {
+    public Order(ArrayList<Product> products,String id) {
         this.id = id;
         this.products = products;
     }

@@ -5,17 +5,18 @@ import java.util.HashMap;
 import java.util.Optional;
 
 public class OrderDBMemory implements OrderDB{
-    private ArrayList<Order> orders= new ArrayList<>();
+    private HashMap<String, Order> orders= new HashMap<>();
 
 
     @Override
     public void addOrder(Order order) {
-
+        orders.put(order.getId(),order);
     }
 
     @Override
     public Optional<Order> getByID(String id) {
-        return Optional.empty();
+        Order outOrder=orders.get(id);
+        return outOrder== null ? Optional.empty() : Optional.of(outOrder);
     }
 
 
