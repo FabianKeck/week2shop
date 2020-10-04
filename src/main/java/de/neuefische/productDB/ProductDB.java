@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 public interface ProductDB {
+
     Optional<ArrayList<Product>> list();
-    Optional<Product>  getById();
+    Optional<Product>  getById(String id);
 }

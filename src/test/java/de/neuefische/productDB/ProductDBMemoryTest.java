@@ -26,7 +26,7 @@ class ProductDBMemoryTest {
     }
 
     @Test
-    void getByIdTest(){
+    void getByIdTestPositive(){
         //given
         ArrayList<Product> products = new ArrayList<>(List.of(
                 new Product("Tisch", "1"),
@@ -35,11 +35,31 @@ class ProductDBMemoryTest {
         Product expected =new Product("Tisch","2");
         ProductDB productDB =new ProductDBMemory(products);
         //when
-        Optional<Product> actual = getByIdTest("2");
-        //then
-        assertEquals(expected,actual.get());
+        Optional<Product> actual = productDB.getById("2");
+        //
+        if(actual.isPresent()){
+            assertEquals(expected,actual.get());
+        } else{
+            fail("getByIDTestPositive: No Student returned");
+        }
 
     }
+
+    @Test
+    void getByIdTestNegative(){
+        //given
+        ArrayList<Product> products = new ArrayList<>(List.of(
+                new Product("Tisch", "1"),
+                new Product("Stuhl", "2")
+        ));
+        Product expected =new Product("Tisch","2");
+        ProductDB productDB =new ProductDBMemory(products);
+        //when
+        Optional<Product> actual = productDB.getById("3");
+        //
+        assertTrue(actual.isEmpty());
+    }
+
 
 
 
