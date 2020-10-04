@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 public interface OrderDB {
-    void addOrder(Order order);
+    void add(Order order);
     Optional<Order> getByID(String id);
 
-    ArrayList<Order> listOrders();
+    ArrayList<Order> list();
 }

@@ -1,6 +1,7 @@
 package de.neuefische.orderdb;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Optional;
 
@@ -9,7 +10,7 @@ public class OrderDBMemory implements OrderDB{
 
 
     @Override
-    public void addOrder(Order order) {
+    public void add(Order order) {
         orders.put(order.getId(),order);
     }
 
@@ -21,7 +22,12 @@ public class OrderDBMemory implements OrderDB{
 
 
     @Override
-    public ArrayList<Order> listOrders() {
-        return null;
+    public ArrayList<Order> list() {
+        ArrayList<Order> orderArrayList= new ArrayList<>();
+        orders.forEach(
+                (id,order)->orderArrayList.add(order)
+                );
+        orderArrayList.sort(Comparator.comparing(Order::getId));
+        return orderArrayList;
     }
 }
