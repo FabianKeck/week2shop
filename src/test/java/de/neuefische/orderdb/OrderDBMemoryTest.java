@@ -1,6 +1,6 @@
 package de.neuefische.orderdb;
 
-import de.neuefische.productDB.Product;
+import de.neuefische.productDB.WeighableProduct;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -16,11 +16,11 @@ class OrderDBMemoryTest {
         //given
         OrderDB orderDB = new OrderDBMemory();
         Order order1 = new Order(new ArrayList<>(List.of(
-                new Product("Fisch","1")
+                new WeighableProduct("Fisch","1")
         )),"1");
         orderDB.add(order1);
         Order expected =  new Order(new ArrayList<>(List.of(
-                new Product("Fisch","1")
+                new WeighableProduct("Fisch","1")
         )),"1");
 
         //when
@@ -35,7 +35,7 @@ class OrderDBMemoryTest {
         //given
         OrderDB orderDB = new OrderDBMemory();
         Order order1 = new Order(new ArrayList<>(List.of(
-                new Product("Fisch","1")
+                new WeighableProduct("Fisch","1")
         )),"1");
         orderDB.add(order1);
         //when
@@ -50,19 +50,19 @@ class OrderDBMemoryTest {
         //given
         OrderDB orderDB = new OrderDBMemory();
         Order order1 = new Order(new ArrayList<>(List.of(
-                new Product("Fisch","1")
+                new WeighableProduct("Fisch","1")
         )),"1");
         orderDB.add(order1);
         Order order2= new Order(new ArrayList<>(List.of(
-                new Product("Fleisch","2")
+                new WeighableProduct("Fleisch","2")
         )),"2");
         orderDB.add(order2);
         ArrayList<Order> expected = new ArrayList<>();
         expected.add(new Order(new ArrayList<>(List.of(
-                new Product("Fisch","1")
+                new WeighableProduct("Fisch","1")
         )),"1"));
         expected.add(new Order(new ArrayList<>(List.of(
-                new Product("Fleisch","2")
+                new WeighableProduct("Fleisch","2")
         )),"2"));
 
         //when

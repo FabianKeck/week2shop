@@ -14,16 +14,16 @@ class ProductDBMemoryTest {
     void listTest(){
         //given
         ArrayList<Product> products = new ArrayList<>(List.of(
-                new Product("Stuhl", "2"),
-                new Product("Tisch", "1")
+                new WeighableProduct("Stuhl", "2"),
+                new WeighableProduct("Tisch", "1")
                 ));
         ProductDB productDB =new ProductDBMemory(products);
         //when
         Optional<ArrayList<Product>> actual=productDB.list();
         //then
         assertTrue(actual.isPresent());
-        assertArrayEquals(actual.get().toArray(),new Product[] {
-                new Product("Tisch", "1"),new Product("Stuhl", "2")
+        assertArrayEquals(actual.get().toArray(),new WeighableProduct[] {
+                new WeighableProduct("Tisch", "1"),new WeighableProduct("Stuhl", "2")
         });
 
     }
@@ -32,10 +32,10 @@ class ProductDBMemoryTest {
     void getByIdTestPositive(){
         //given
         ArrayList<Product> products = new ArrayList<>(List.of(
-                new Product("Tisch", "1"),
-                new Product("Stuhl", "2")
+                new WeighableProduct("Tisch", "1"),
+                new WeighableProduct("Stuhl", "2")
         ));
-        Product expected =new Product("Tisch","2");
+        WeighableProduct expected =new WeighableProduct("Tisch","2");
         ProductDB productDB =new ProductDBMemory(products);
         //when
         Optional<Product> actual = productDB.getById("2");
@@ -52,10 +52,10 @@ class ProductDBMemoryTest {
     void getByIdTestNegative(){
         //given
         ArrayList<Product> products = new ArrayList<>(List.of(
-                new Product("Tisch", "1"),
-                new Product("Stuhl", "2")
+                new WeighableProduct("Tisch", "1"),
+                new WeighableProduct("Stuhl", "2")
         ));
-        Product expected =new Product("Tisch","2");
+        Product expected =new WeighableProduct("Tisch","2");
         ProductDB productDB =new ProductDBMemory(products);
         //when
         Optional<Product> actual= productDB.getById("3");

@@ -4,6 +4,7 @@ import de.neuefische.orderdb.Order;
 import de.neuefische.productDB.Product;
 import de.neuefische.productDB.ProductDB;
 import de.neuefische.productDB.ProductDBMemory;
+import de.neuefische.productDB.WeighableProduct;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -17,11 +18,11 @@ class OrderServiceTest {
     void testAddOrdersMissingProduct(){
         //given
         OrderService orderService = new OrderService(new ArrayList<>(List.of(
-                new Product("Fisch","1"),
-                new Product("Fleisch", "2")
+                new WeighableProduct("Fisch","1"),
+                new WeighableProduct("Fleisch", "2")
         )));
         Order newOrder= new Order(new ArrayList<>(List.of(
-                        new Product("Fleisch", "3")
+                        new WeighableProduct("Fleisch", "3")
         )),"2");
         //when
 
@@ -38,15 +39,15 @@ class OrderServiceTest {
     void testAddOrdersExistingProductAndList(){
         //given
         OrderService orderService = new OrderService(new ArrayList<>(List.of(
-                new Product("Fisch","1"),
-                new Product("Fleisch", "2")
+                new WeighableProduct("Fisch","1"),
+                new WeighableProduct("Fleisch", "2")
         )));
         Order newOrder= new Order(new ArrayList<>(List.of(
-                new Product("Fleisch", "2")
+                new WeighableProduct("Fleisch", "2")
         )),"1");
         ArrayList<Order> expected = new ArrayList<>();
         expected.add(new Order(new ArrayList<>(List.of(
-                new Product("Fleisch", "2")
+                new WeighableProduct("Fleisch", "2")
         )),"1"));
         //when
         try {
