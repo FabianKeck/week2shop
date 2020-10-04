@@ -14,16 +14,16 @@ class ProductDBMemoryTest {
     void listTest(){
         //given
         ArrayList<Product> products = new ArrayList<>(List.of(
-                new WeighableProduct("Stuhl", "2"),
-                new WeighableProduct("Tisch", "1")
+                new CountableProduct("Stuhl", "2"),
+                new CountableProduct("Tisch", "1")
                 ));
         ProductDB productDB =new ProductDBMemory(products);
         //when
         Optional<ArrayList<Product>> actual=productDB.list();
         //then
         assertTrue(actual.isPresent());
-        assertArrayEquals(actual.get().toArray(),new WeighableProduct[] {
-                new WeighableProduct("Tisch", "1"),new WeighableProduct("Stuhl", "2")
+        assertArrayEquals(actual.get().toArray(),new CountableProduct[] {
+                new CountableProduct("Tisch", "1"),new CountableProduct("Stuhl", "2")
         });
 
     }
@@ -35,13 +35,14 @@ class ProductDBMemoryTest {
                 new WeighableProduct("Tisch", "1"),
                 new WeighableProduct("Stuhl", "2")
         ));
-        WeighableProduct expected =new WeighableProduct("Tisch","2");
         ProductDB productDB =new ProductDBMemory(products);
+        WeighableProduct expected =new WeighableProduct("Tisch","2");
+
         //when
         Optional<Product> actual = productDB.getById("2");
         //
         if(actual.isPresent()){
-            assertEquals(expected,actual.get());
+            assertEquals(expected, actual.get());
         } else{
             fail("getByIDTestPositive: No Student returned");
         }
